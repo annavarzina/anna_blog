@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Correlation analysis limitations in examples - Anna&#39;s blog</title>
+<meta property="og:title" content="Correlation analysis limitations in examples - Anna&#39;s blog">
+
+
+  <link href='https://annavarzina.github.io/anna_blog/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/anna_blog/css/fonts.css" media="all">
+<link rel="stylesheet" href="/anna_blog/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/anna_blog/" class="nav-logo">
+    <img src="/anna_blog/images/logo1.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/anna_blog/about/">About</a></li>
+    
+    <li><a href="/anna_blog/">Blog</a></li>
+    
+    <li><a href="/anna_blog/cv.html">CV</a></li>
+    
+    <li><a href="https://github.com/annavarzina/">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/varzik/">LinkedIn</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">Correlation analysis limitations in examples</h1>
+
+    
+    <span class="article-date">2020-07-15</span>
+    
+
+    <div class="article-content">
+      
+<script src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="preview" class="section level2">
+<h2>Preview</h2>
+<p>Correlation analysis is a common method for studying a relationship between two variables and data exploration.
+Here I do not intend to explain in much details the theoretical part of the correlation analysis but I want to provide several practical examples where this method is applicable or not.
+For that purpose, I will generate simple datasets in R, create plots and discuss the obtained results.</p>
+<p>If you are more interested in the theory of correlation analysis or tools for correlation analsis in R or other programming languages, I would refer to another works then.
+More information about correlation and multivariate you can find in such books as “Practical multivariate analysis” by Afifi A., et.al <span class="citation">(<a href="#ref-afifi2019practical" role="doc-biblioref">1</a>)</span>, “Applied multiple regression/correlation analysis for the behavioral sciences” by Cohen J., et.al. <span class="citation">(<a href="#ref-cohen2013applied" role="doc-biblioref">2</a>)</span> or many others.
+I would also recommend articles in various blogs to get a nice explanation and practical examples of the exploratory data analysisand with implementation in R such as <a href="https://www.statsandr.com/blog/correlogram-in-r-how-to-highlight-the-most-correlated-variables-in-a-dataset/">“Stats and R”</a>, <a href="https://datascienceplus.com/correlation-and-linear-regression/">“DataScience+”</a>, <a href="http://www.sthda.com/english/wiki/correlation-test-between-two-variables-in-r">“STHDA”</a>, <a href="https://blog.exploratory.io/find-correlation-or-similarity-among-categories-or-variables-4813130f53c0">“Learn data science”</a> and similar.</p>
+</div>
+<div id="where-correlation-is-used" class="section level2">
+<h2>Where correlation is used?</h2>
+<p><em>Correlation coefficient</em> can be calculated for variables X (in literature it is called <em>independent</em> or <em>predictor</em> variable) and Y (that is called <em>dependent</em> or <em>outcome</em> variable).
+The obtained value of the correlation coefficient will indicate whether there is a positive, negative or zero relationship of the two variables.
+The standard rule is to define the ranges for strong/medium/weak correlation and check where the obtained correlation coefficient fits.
+Commonly the ranges are defined as in the table below</p>
+<div id="tab1" class="section level6">
+<h6>Table 1. Correlation interpretation</h6>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Range</th>
+<th align="left">Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(0 - \pm 0.2\)</span></td>
+<td align="left">Little correlation</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\pm 0.2 - \pm 0.4\)</span></td>
+<td align="left">Weak correlation</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\pm 0.4 - \pm 0.7\)</span></td>
+<td align="left">Medium correlation</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\pm 0.7 - \pm 0.9\)</span></td>
+<td align="left">Strong correlation</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\pm 0.9 - \pm 1\)</span></td>
+<td align="left">Very strong correlation</td>
+</tr>
+</tbody>
+</table>
+<p>Interestingly, small correlation does not always mean that variables are unassociated.
+In order to check whether correlation coefficient truly reflects the relationship, it is always a good practice to do the correlation test and draw a scatter plot for the data.
+Scatter plot will give a better insight on the data we work with and will help to decide what kind of analyss is appropriate for such data.
+Here I will make a function for a scatter plot with ‘ggplot2’ package:</p>
+<pre class="r"><code>scatter_plot &lt;- function(x, y, formula = y~x ){
+    df &lt;- tibble(x, y)
+    p &lt;- df %&gt;% ggplot() +
+        geom_point(aes(x, y)) +
+        geom_smooth(aes(x, y),formula = formula, method = lm) +
+        theme_bw()
+    p
+}</code></pre>
+<p>In practice, the variable X can be <em>fixed</em> (some selected variables such as year, when the measurement was taken, or season) or <em>variable</em> (random variable taken from the population such as age or sample size).</p>
+<p>An example of a fixed X is shown below. We choose a number of samples (<code>n=100</code>) that are measured at 10 points. <code>x</code> and <code>y</code> (where <code>y</code> linearly depends on <code>x</code>: <span class="math inline">\(Y=2\cdot(X + \mbox{noise})+50\)</span>) are defined as follows:</p>
+<pre class="r"><code>set.seed(10)
+n &lt;- 100
+x &lt;-  sort(sample(c(1:10), size = n, replace = TRUE))
+y &lt;- 2 * (x + sample(1:n, n)/40) + 50
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/fixed%20X-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.9743232</code></pre>
+<p>The relation is linear and sampling is random, we can calculate Pearson correlation coefficient for this data.
+We see that correlation coefficient is positive and equals to 0.9743232, which in <a href="#tab1">Table 1</a> corresponds to very strong correlation.</p>
+<p>Another example represents a variable X, which is a sequence of integers between 1 and 100. As in the previous example, <code>y</code> linearly depends on <code>x</code>: <span class="math inline">\(Y=2\cdot(X + \mbox{noise})+50\)</span>.</p>
+<pre class="r"><code>set.seed(10)
+n &lt;- 100
+x &lt;-  seq(1, n)
+y &lt;- 2 * (x + sample(1:n, n)/4) + 50
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/variable%20X-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.9692791</code></pre>
+<p>As expected, the correlation coefficient is again positive and equals to 0.9692791, which is a very strong correlation according to the <a href="#tab1">Table above</a>.</p>
+<p>Basically, these are the typical examples of data that is appropriate for correlation analysis.
+Let’s move on and have a look into examples when we have to be cautious.</p>
+</div>
+</div>
+<div id="which-data-is-inappropriate-for-correlation-analysis" class="section level2">
+<h2>Which data is inappropriate for correlation analysis?</h2>
+<p>Now, let’s look at the cases that are not very applicable for correlation analysis.
+In practice, correlation analysis can be used for representative random sampling only, which means that sampling is not biased and, for instance, measurements should not be repeated for the same specimen.
+This is mainly the question on how the data was obtained and the experiment was set-up, so is something wrong at this stage an ew dataset has to be generated.</p>
+<p>However, even for a representative and random dataset, correlation analysis can be inappropriate.
+There is a nice <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5079093/">online article</a> written by Aggarwal R. and Ranganathan P. <span class="citation">(<a href="#ref-aggarwal2016common" role="doc-biblioref">3</a>)</span> with the example of correlation pitfalls.
+Here I will use few similar cases as in that work with my own generated data and complement it with some additional examples.</p>
+<p>Let’shave a look in the most common problematic cases in correlation analysis.</p>
+<div id="non-linear-relationship" class="section level3">
+<h3>Non-Linear relationship</h3>
+<p>Correlation analysis only indicates a linear relationship, but it will not show other non-linear type of dependencies. For example, lets generate a dataset where <code>y</code> is a quadratic function of <code>x</code> (<span class="math inline">\(Y= -X**2 + \mbox{noise})\)</span>).</p>
+<pre class="r"><code>set.seed(10)
+n &lt;- 100
+x &lt;-  -seq(1, n) + n/2
+y &lt;- (x )**2 + sample(1:n, n)*4
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/non-linear-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] -0.02773901</code></pre>
+<p>We see that the correlation analysis suggests no correlation between these two variables, while it truly exists.</p>
+<pre class="r"><code>scatter_plot(x,y, formula = y ~ poly(x,2))</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/non-linear-polynomial-1.png" width="672" /></p>
+</div>
+<div id="outliers" class="section level3">
+<h3>Outliers</h3>
+<p>Another example where you have to be careful is a dataset that contains several data points that stay away from the main data cluster (outliers).
+Let’s generate <code>x</code> and <code>y</code> variables with no dependency.</p>
+<pre class="r"><code>set.seed(10)
+n &lt;- 30
+x &lt;-  c(seq(n-10, n+10))
+y &lt;- sample(1:length(x), length(x))*3
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/data-cluster-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.005194805</code></pre>
+<p>However, if we add one point far from this cluster, correlation coefficient will be much higher, which indicates a relationship between <code>x</code> and <code>y</code> that can be false.</p>
+<pre class="r"><code>set.seed(10)
+x &lt;-  c(x, 100)
+y &lt;- c(y, 100 + sample(1:20,1))
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/data-cluster-with-outlier-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.6271294</code></pre>
+<p>Another example shows how outliers reduce the value of correlation coefficient and lead to wrong approximation with linear regression. In the example above, <code>x</code> and <code>y</code> are linearly related, but if we add several outlier values, the correlation analysis fails to find any relationship between these variables. Such outliers are common in various time series or image data and it is important to remove or replace these far standing values before the analysis.</p>
+<pre class="r"><code>set.seed(10)
+n &lt;- 100
+x &lt;-  seq(1, n) 
+y &lt;- x + sample(1:n, n)/10 
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/no-outliers-lr-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.9949924</code></pre>
+<pre class="r"><code>idx &lt;- sample(1:n, 10)
+y[idx] &lt;- y[idx] + sample(1:n, 10)*10
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/outliers-lr-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.2784233</code></pre>
+</div>
+<div id="two-subgroups" class="section level3">
+<h3>Two subgroups</h3>
+<p>Similarly to the first example with one far standing outlier, such subgroups may create a false sense of a relationship even if there is no correlation withing each subgroup.</p>
+<pre class="r"><code>set.seed(10)
+n = 20
+x &lt;-  c(seq(11, 10+n), seq(71, 70+n))
+y &lt;- c(sample(1:n, n), (100+sample(1:n, n)))
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/subgroups-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.9799321</code></pre>
+</div>
+<div id="very-small-sample-size" class="section level3">
+<h3>Very small sample size</h3>
+<p>Again, with only a few values, a false relationship between <code>x</code> and <code>y</code> may appear.</p>
+<pre class="r"><code>set.seed(25)
+n = 5
+x &lt;-  1:n
+y &lt;- sample(1:n, n)*2+10
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/small-sample-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] -0.7</code></pre>
+</div>
+<div id="heteroscedasticity" class="section level3">
+<h3>Heteroscedasticity</h3>
+<p>Or just unequal scatter.
+Unfortunately, if you observe <a href="https://statisticsbyjim.com/regression/heteroscedasticity-regression/">heteroscedasticity</a> in a scatter plot, you need to invesigate such data in more details.</p>
+<pre class="r"><code>set.seed(10)
+n &lt;- 250
+x &lt;-  seq(1, n)
+y &lt;- x+(sample(1:n, n)/100)*x# change of variance
+scatter_plot(x,y)</code></pre>
+<p><img src="https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/index_files/figure-html/heteroscedasticity-1.png" width="672" /></p>
+<pre class="r"><code>c = cor(x,y)
+c</code></pre>
+<pre><code>## [1] 0.8403842</code></pre>
+<p>Of course, these are not the only examples where correlation analysis does not perform well and I did not cover such cases as dependent variables and ordinal scale data.
+But still, I hope it was useful to learn when we have to be careful in making conclusions or how to improve the performed analysis.</p>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-afifi2019practical" class="csl-entry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">AFIFI, Abdelmonem, MAY, Susanne, DONATELLO, Robin and CLARK, Virginia A. <em>Practical multivariate analysis</em>. CRC Press, 2019. </div>
+</div>
+<div id="ref-cohen2013applied" class="csl-entry">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">COHEN, Jacob, COHEN, Patricia, WEST, Stephen G and AIKEN, Leona S. <em>Applied multiple regression/correlation analysis for the behavioral sciences</em>. Routledge, 2013. </div>
+</div>
+<div id="ref-aggarwal2016common" class="csl-entry">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">AGGARWAL, Rakesh and RANGANATHAN, Priya. Common pitfalls in statistical analysis: The use of correlation techniques. <em>Perspectives in clinical research</em>. 2016. Vol. 7, no. 4, p. 187. </div>
+</div>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/anna_blog/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/anna_blog/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/anna_blog/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

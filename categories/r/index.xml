@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Anna&#39;s blog</title>
+    <link>https://annavarzina.github.io/anna_blog/categories/r/</link>
+    <description>Recent content in R on Anna&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://annavarzina.github.io/anna_blog/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How quickly make a blog in R with blogdown</title>
+      <link>https://annavarzina.github.io/anna_blog/2021/03/03/how-quickly-make-a-blog-in-r-with-blogdown/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://annavarzina.github.io/anna_blog/2021/03/03/how-quickly-make-a-blog-in-r-with-blogdown/</guid>
+      <description>Website within a few code lines This is a quick tutorial on how to create a blog with R and deploy it in Github Pages. I assume that R and Rstudio are already installed on your PC. If not, here is a link on how to set up the environment. Steps below are done in Rstudio.
+Step 1. Install blogdown and hugo themes. At first, let’s run these two commands in console.</description>
+    </item>
+    
+    <item>
+      <title>Correlation analysis limitations in examples</title>
+      <link>https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/</link>
+      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://annavarzina.github.io/anna_blog/2020/07/15/correlation-analysis-limitations-in-examples/</guid>
+      <description>Preview Correlation analysis is a common method for studying a relationship between two variables and data exploration. Here I do not intend to explain in much details the theoretical part of the correlation analysis but I want to provide several practical examples where this method is applicable or not. For that purpose, I will generate simple datasets in R, create plots and discuss the obtained results.
+If you are more interested in the theory of correlation analysis or tools for correlation analsis in R or other programming languages, I would refer to another works then.</description>
+    </item>
+    
+  </channel>
+</rss>

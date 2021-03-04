@@ -1,0 +1,89 @@
+[
+    {
+         "id":"aggarwal2016common",
+         "type":"article-journal",
+         "title":"Common pitfalls in statistical analysis: The use of correlation techniques",
+         "author": [
+             {
+                 "family": "Aggarwal",
+                 "given": "Rakesh"
+             },
+             {
+                 "family": "Ranganathan",
+                 "given": "Priya"
+             }
+          ],
+         "journal": "Perspectives in clinical research",
+         "volume": "7",
+         "issue": "4",
+         "URL": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5079093/",
+         "DOI": "10.4103/2229-3485.192046",
+         "publisher": "Wolters Kluwer--Medknow Publications",
+         "page": "187-190",
+         "issued": [
+             {
+             "year": "2016",
+             "month": "10"
+             }
+         ]
+    },
+        {
+         "id":"afifi2019practical",
+         "type":"book",
+         "title":"Practical multivariate analysis",
+         "author": [
+             {
+                 "family": "Afifi",
+                 "given": "Abdelmonem"
+             },
+             {
+                 "family": "May",
+                 "given": "Susanne"
+             },
+             {
+                 "family": "Donatello",
+                 "given": "Robin"
+             },
+             {
+                 "family": "Clark",
+                 "given": "Virginia A"
+             }
+          ],
+         "publisher": "CRC Press",
+         "issued": [
+             {
+             "year": "2019"
+             }
+         ]
+    },
+        {
+         "id":"cohen2013applied",
+         "type":"book",
+         "title":"Applied multiple regression/correlation analysis for the behavioral sciences",
+         "author": [
+             {
+                 "family": "Cohen",
+                 "given": "Jacob"
+             },
+             {
+                 "family": "Cohen",
+                 "given": "Patricia"
+             },
+             {
+                 "family": "West",
+                 "given": "Stephen G"
+             },
+             {
+                 "family": "Aiken",
+                 "given": "Leona S"
+             }
+          ],
+         "publisher": "Routledge",
+         "issued": [
+             {
+             "year": "2013"
+             }
+         ]
+    }
+]
+
