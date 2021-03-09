@@ -13,8 +13,8 @@
       <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.kempest.site/2021/03/04/how-to-make-a-blog-in-r-blogdown-and-github-pages/</guid>
-      <description>This is a quick tutorial on how to create a blog with R and deploy it in Github Pages. I assume that R and Rstudio are already installed on your PC. If not, here is a link on how to set up the environment. All steps below are done in Rstudio.
-Step 1. Install blogdown and hugo themes. At first, let’s run these two commands in R console and install blogdown and hugo.</description>
+      <description>This post is made for and also published in the blog of community women.code(be).
+The purpose of this tutorial This is a quick tutorial on how to create a blog with R and deploy it to Github Pages. It is useful for anyone who wants to make a static website in markdown and host it for free. It can be also helpful if you just want to get some practice with markdown or R markdown, learn web site basics and R programming language.</description>
     </item>
     
   </channel>
