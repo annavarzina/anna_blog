@@ -8,13 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kempest.site/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to make a blog in R blogdown and Github Pages</title>
-      <link>https://www.kempest.site/2021/03/04/how-to-make-a-blog-in-r-blogdown-and-github-pages/</link>
+      <title>How to make blog in R blogdown and Github Pages</title>
+      <link>https://www.kempest.site/2021/03/04/how-to-make-blog-in-rblogdown/</link>
       <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/2021/03/04/how-to-make-a-blog-in-r-blogdown-and-github-pages/</guid>
-      <description>This post is made for and also published in the blog of community women.code(be).
-The purpose of this tutorial This is a quick tutorial on how to create a blog with R and deploy it to Github Pages. It is useful for anyone who wants to make a static website in markdown and host it for free. It can be also helpful if you just want to get some practice with markdown or R markdown, learn web site basics and R programming language.</description>
+      <guid>https://www.kempest.site/2021/03/04/how-to-make-blog-in-rblogdown/</guid>
+      <description>This post is made for the blog of community women.code(be).
+The purpose of this tutorial Did you ever think about making your own website or personal blog easily and for free? Or maybe you want to learn some web development basics? Then this tutorial might be interesting for you. Below we will create a static website in markdown with R programming language and deploy it to Github Pages. Don’t be afraid if you are not familiar with R or markdown.</description>
     </item>
     
     <item>

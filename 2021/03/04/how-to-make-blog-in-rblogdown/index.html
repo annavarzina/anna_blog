@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>How to make blog in R blogdown and Github Pages - Anna&#39;s blog</title>
+<meta property="og:title" content="How to make blog in R blogdown and Github Pages - Anna&#39;s blog">
+
+
+  <link href='https://www.kempest.site/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo1.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/">Blog</a></li>
+    
+    <li><a href="/cv.html">CV</a></li>
+    
+    <li><a href="https://github.com/annavarzina/">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/varzik/">LinkedIn</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">How to make blog in R blogdown and Github Pages</h1>
+
+    
+    <span class="article-date">2021-03-04</span>
+    
+
+    <div class="article-content">
+      
+<script src="https://www.kempest.site/2021/03/04/how-to-make-blog-in-rblogdown/index_files/header-attrs/header-attrs.js"></script>
+
+
+<p><em>This post is made for the blog of community <a href="https://www.womendotcode.be/">women.code(be)</a>.</em></p>
+<p><img src="img/title_image.jpg" style="width:100.0%" /></p>
+<div id="the-purpose-of-this-tutorial" class="section level2">
+<h2>The purpose of this tutorial</h2>
+<p>Did you ever think about making your own website or personal blog easily and for free? Or maybe you want to learn some web development basics? Then this tutorial might be interesting for you. Below we will create a static website in <a href="https://www.markdownguide.org/basic-syntax/">markdown</a> with <a href="https://www.r-project.org/">R</a> programming language and deploy it to <a href="https://pages.github.com/">Github Pages</a>. Don’t be afraid if you are not familiar with R or markdown. The instructions are simple and anyone even with a short experience in programming can easily follow them. You should be also familiar with the use of terminal because site building and page editing can’t be accessible through a graphical interface as in WordPress. Nevertheless, RStudio IDE makes the development much more user friendly and straightforward than just in terminal and text editor.</p>
+<p>You can also use this tutorial to get some practice with markdown and R programming language or <a href="https://rmarkdown.rstudio.com/authoring_basics.html">R markdown</a>. R markdown is often used by R developers to combine code and visualizations of their data in reports, dashboards or presentations. For example, <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1392362">AirBnb uses R markdown for the documentation of their research in R</a>.</p>
+<p>The website in R is created with the <code>blogdown</code> package. <a href="https://bookdown.org/yihui/blogdown/">Blogdown</a> is based on a popular static site generator <a href="https://gohugo.io/">Hugo</a> that renders your markdown content into HTML files. In other words, Hugo will transform your content so it can be read by any web browser. You don’t need to know much about Hugo at this stage since everything is done by blogdown package.</p>
+<p>This tutorial will approximately take 1-2 hours of your time depending on your experience. Be aware that further settings of style (e.g. themes, css) and creating content are not explained in this post. I leave this part to you or will cover it in future. Together we will run through all the steps to build our R markdown-powered blog in Rstudio IDE.</p>
+</div>
+<div id="step-0.-prerequisites" class="section level2">
+<h2>Step 0. Prerequisites</h2>
+<p>To be able to follow the tutorial you need to have this software on your PC:</p>
+<ul>
+<li><a href="https://www.r-project.org/">R</a></li>
+<li><a href="https://rstudio.com/">RStudio</a></li>
+<li><a href="https://git-scm.com/">Git</a></li>
+</ul>
+<p>This <a href="https://rstudio-education.github.io/hopr/starting.html">link</a> should help you to set up the R environment. First, you need to install R. Second, install RStudio. Here is another <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">link</a> that tells you how to install git in case you don’t have it yet. Also you will need to have an account on <a href="https://github.com/">GitHub</a>.</p>
+</div>
+<div id="step-1.-install-blogdown-and-hugo" class="section level2">
+<h2>Step 1. Install blogdown and Hugo</h2>
+<p>First, let’s run these two commands in the R console to install <code>blogdown</code> and <code>hugo</code>.</p>
+<pre class="r"><code>install.packages(&quot;blogdown&quot;)
+blogdown::install_hugo()</code></pre>
+<p>This will install all packages needed for a correct work of <code>blogdown</code> and <code>hugo</code>. In case if you already have them, please check the latest updates and update these packages if needed.</p>
+</div>
+<div id="step-2.-create-rstudio-project" class="section level2">
+<h2>Step 2. Create Rstudio project</h2>
+<p>Now let’s create a new project in <code>"File"</code> <span class="math inline">\(\rightarrow\)</span> <code>"New Project..."</code> menu. Select <code>"New Directory"</code>:</p>
+<p><img src="img/step2_1.png" style="width:50.0%" /></p>
+<p>Then select <code>"Website using blogdown"</code>:</p>
+<p><img src="img/step2_2.png" style="width:50.0%" /></p>
+<p>Fill in a directory and project name as shown in figure below:</p>
+<p><img src="img/step2_3.png" style="width:50.0%" /></p>
+<!-- [Alternative] It is also possible to create a website from console `blogdown::new_site()` if you select a simple R project. -->
+</div>
+<div id="step-3.-creating-a-github-repository" class="section level2">
+<h2>Step 3. Creating a GitHub repository</h2>
+<p>Publishing our website via Github Pages requires some additional customization. We will need to create a new repository in <a href="https://github.com/">Github</a>. For example, let’s call it “rblogexample”. In step 6, we’ll take a look at how to deploy a website to Github more closely.</p>
+</div>
+<div id="step-4.-customize-config.yaml" class="section level2">
+<h2>Step 4. Customize ‘config.yaml’</h2>
+<p>Now we need to modify our <code>config.yaml</code> that is located in the main folder of your project. Open <code>config.yaml</code> and change the fields as follows:</p>
+<ul>
+<li>Set up the base URL to the “root” of the web page: <code>https://&lt;user_name&gt;.github.io/&lt;repo_name&gt;</code>. For example, in my case it is <a href="https://annavarzina.github.io/rblogexample/" class="uri">https://annavarzina.github.io/rblogexample/</a>).</li>
+</ul>
+<p><code>baseurl: https://annavarzina.github.io/rblogexample/</code></p>
+<ul>
+<li>Change the default <code>/public</code> folder to a custom folder of the repository outside of the project. In this example I named the folder <code>/myblog</code> which I put one level up. It is needed because your website should be kept in the separate repository. Therefore, every time you make changes in the project and make a build, the website folder will be automatically updated. So there is no need to copy a new website version manually. Moreover, you will need to initiate git in the website folder while your project sources can have a separate version control.</li>
+</ul>
+<p><code>publishdir: ../myblog</code></p>
+<ul>
+<li><em>[Optional]</em> Add title:</li>
+</ul>
+<p><code>title: R blog example</code></p>
+<ul>
+<li><em>[Optional]</em> Update <code>menu</code> and add/change the links (Github/Twitter/Other):</li>
+</ul>
+<pre class="r"><code>menu:
+  main:
+    - name: About
+      url: /about/
+    - name: GitHub
+      url: https://github.com/rstudio/blogdown
+    - name: Twitter
+      url: https://twitter.com/rstudio</code></pre>
+</div>
+<div id="step-5.-build-website" class="section level2">
+<h2>Step 5. Build website</h2>
+<p>Now we can build our blog by running these commands:</p>
+<pre class="r"><code>blogdown::build_site()
+blogdown::serve_site() </code></pre>
+<p>Additionally, you can also run <code>library(blogdown)</code> in the console. This will allow you to run your commands without having to write the <code>blogdown::</code> prefix. In this tutorial we use the first method in order to show explicitly that these commands belong to the <code>blogdown</code> library.</p>
+<p>Now we are ready to view our website in the Rstudio viewer or browser!</p>
+<p><code>http://localhost:4321/rblogexample</code></p>
+<p><img src="img/step5_1.png" style="width:50.0%" /></p>
+<p>After it has been built, the components are placed in the folder <code>/myblog</code> which we defined in the configurations earlier.</p>
+<p>In order to stop running site, use the following command:
+<code>blogdown::stop_site()</code></p>
+<p><strong>TIP!</strong></p>
+<p>If you want to personalize your blog there is a variety of options available that will let you adjust the styling with existing Hugo-themes, custom CSS or JavaScript. This is not really a part of this tutorial’s scope, but this might help you get started:</p>
+<ul>
+<li>Hugo themes. Update <code>theme</code> in <code>config.yaml</code> with themes from <a href="https://themes.gohugo.io/" class="uri">https://themes.gohugo.io/</a>.</li>
+<li>Replace logo. Just use your own file and place it to <code>/static/images/logo.png</code> path. In <code>config.yaml</code> it should look as:</li>
+</ul>
+<pre><code>logo:
+    alt: Logo
+    height: 50
+    url: logo.png
+    width: 50</code></pre>
+<ul>
+<li>CSS. For example, put it to <code>/static/css/custom.css</code> and update <code>config.yaml</code> with <code>customCSS: ["css/custom.css"]</code> in <code>params</code>.</li>
+<li>JavaScript. For example, put it to <code>/static/js/custom.js</code> and update <code>config.yaml</code> with <code>customJS: ["js/custom.js"]</code> in <code>params</code>.</li>
+</ul>
+</div>
+<div id="step-6.-deploy-to-github" class="section level2">
+<h2>Step 6. Deploy to Github</h2>
+<p>First, let’s <a href="https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line">create a version control in the project folder</a> so we can track changes. Secondly, we’ll initialize git in the rendered blog folder (<code>/myblog</code>). You can use Rstudio Terminal to create a git repository (Click <code>"View"</code> -&gt; <code>"Move focus to Terminal"</code> if the terminal window is not open).</p>
+<p>Write the following commands in the terminal:</p>
+<pre><code>cd ../myblog
+git init
+git add .
+git commit -m &quot;Init blogdown site&quot;
+git branch -M main</code></pre>
+<p>Adding the remote repository (it is always a good practice to make a connection with <a href="https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">SSH key</a>):</p>
+<p><code>git remote add origin git@github.com:annavarzina/rblogexample.git</code></p>
+<p>Now we can upload changes to remote repository:</p>
+<p><code>git push -u origin main</code></p>
+<p>After the deployment, go to repository settings and scroll down to <strong>Github Pages</strong>.
+Choose branch <code>main</code>, directory <code>/root</code> and click on <code>Save</code>.
+Your webpage styles will be updated in a while and you can enjoy it via link
+<code>https://&lt;user_name&gt;.github.io/&lt;repo_name&gt;</code>.</p>
+</div>
+<div id="step-7.-create-post" class="section level2">
+<h2>Step 7. Create post</h2>
+<p>Go back to your console and make a new post with the <code>new_post()</code> function similarly to:</p>
+<pre class="r"><code>blogdown::new_post(title = &quot;My first blog post&quot;, 
+                   author = &quot;annav&quot;, ext = &quot;.Rmd&quot;)</code></pre>
+<p>By default, it will be created with the extension <code>.md</code>. Personally, I prefer R Markdown instead and thus explicitly define the extension as <code>.Rmd</code>. The file will be generated in folder <code>/content/post/yyyy-mm-dd-my-first-blog-post</code> where <code>yyyy-mm-dd</code> is the date. Now we will fill it with the content (according to markdown rules) and push the button <code>Knit</code>. The <code>.html</code> file will be rendered and saved in the same folder.</p>
+</div>
+<div id="step-8.-publish-changes" class="section level2">
+<h2>Step 8. Publish changes</h2>
+<p>Rebuild website for publishing with <code>blogdown::build_site()</code>.
+The website will look like this now:</p>
+<p><img src="img/step8_1.png" style="width:50.0%" /></p>
+<p>Now all we need to do is commit the changes (in both project and output directories) and deploy them (in <code>/myblog</code> repository):</p>
+<pre class="r"><code>git add .
+git commit -m &quot;Create new post&quot;
+git push origin main</code></pre>
+</div>
+<div id="step-9.-optional-customize-domain-name" class="section level2">
+<h2>Step 9. [Optional] Customize domain name</h2>
+<p>If you are interested you can go one step further and use your own domain name instead of <code>&lt;user_name&gt;.github.io</code>. Github will only serve as a hosting then.</p>
+<p>To do that we should change a <code>baseurl</code> in config file to the domain (<code>www.example.com</code>). In repository settings on the Github pages sectionm we’ll add the same domain name (<code>www.example.com</code>). Github will automatically generate a CNAME file and commit it. !Do not forget to fetch this commit! And we will also have to link the domain with Github which is done with the DNS provider of our website. There you will have to link the CNAME <code>*</code> and <code>www</code> with <code>&lt;user_name&gt;.github.io</code>. You might have to wait up to 24 hours until these changes take place. Once it is done, the new blog should work on your own domain name. f you want to learn more about this, check out this link on <a href="https://docs.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site">how to manage a custom domain in Github</a>.</p>
+</div>
+<div id="congratulations" class="section level2">
+<h2>Congratulations!</h2>
+<p>Let me welcome you in the world of blogging!
+Now you can enjoy your new blog and create your own content.
+My blog is also made in this manner and I am pretty happy with it especially because I write mostly about programming topics, mathematics and data science with R markdown.</p>
+<p>If you have questions or suggestions, do not hesitate e-mail me at <a href="varzinaanna@gmail.com"><code>varzinaanna@gmail.com</code></a>.</p>
+</div>
+<div id="acknowledgements" class="section level2">
+<h2>Acknowledgements</h2>
+<p>Thanks WomendotCode(be) and especially Claudia for the review and valuable suggestions to this post!</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Here are a few additional links for more information and extra reading:</p>
+<ol class="example" style="list-style-type: decimal">
+<li><a href="https://rmarkdown.rstudio.com/">R Markdown</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown book</a></li>
+<li><a href="https://github.com/rstudio/blogdown/">Blogdown</a></li>
+<li><a href="https://bookdown.org/yihui/blogdown/">Blogdown book</a></li>
+<li><a href="https://guides.github.com/features/pages/">Github Pages</a></li>
+<li><a href="https://gohugo.io/">Hugo</a></li>
+<li><a href="https://aurora-mareviv.github.io/talesofr/2018/02/r-blogdown-setup-in-github-2/">R blogdown setup in github</a></li>
+<li><a href="https://alison.rbind.io/post/new-year-new-blogdown/">Up &amp; running with blogdown in 2021</a></li>
+<li><a href="https://medium.com/@diegousaiuk/how-i-used-hugo-and-blogdown-to-set-up-my-own-website-e32e2eddbf81">How I Used Hugo and blogdown to Set Up My Own Website</a></li>
+</ol>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
