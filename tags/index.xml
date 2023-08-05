@@ -2,62 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Anna&#39;s blog</title>
-    <link>https://www.kempest.site/tags/</link>
+    <link>https://www.kempest.ru/tags/</link>
     <description>Recent content in Tags on Anna&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kempest.site/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kempest.ru/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>blogdown</title>
-      <link>https://www.kempest.site/tags/blogdown/</link>
+      <link>https://www.kempest.ru/tags/blogdown/</link>
       <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/tags/blogdown/</guid>
+      <guid>https://www.kempest.ru/tags/blogdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Correlation analysis</title>
-      <link>https://www.kempest.site/tags/correlation-analysis/</link>
+      <link>https://www.kempest.ru/tags/correlation-analysis/</link>
       <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/tags/correlation-analysis/</guid>
+      <guid>https://www.kempest.ru/tags/correlation-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ggplot</title>
-      <link>https://www.kempest.site/tags/ggplot/</link>
+      <link>https://www.kempest.ru/tags/ggplot/</link>
       <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/tags/ggplot/</guid>
+      <guid>https://www.kempest.ru/tags/ggplot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://www.kempest.site/tags/r/</link>
+      <link>https://www.kempest.ru/tags/r/</link>
       <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/tags/r/</guid>
+      <guid>https://www.kempest.ru/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>About me</title>
-      <link>https://www.kempest.site/tags/about-me/</link>
+      <link>https://www.kempest.ru/tags/about-me/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/tags/about-me/</guid>
+      <guid>https://www.kempest.ru/tags/about-me/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Word cloud</title>
-      <link>https://www.kempest.site/tags/word-cloud/</link>
+      <link>https://www.kempest.ru/tags/word-cloud/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/tags/word-cloud/</guid>
+      <guid>https://www.kempest.ru/tags/word-cloud/</guid>
       <description></description>
     </item>
     

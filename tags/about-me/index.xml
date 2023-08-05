@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About me on Anna&#39;s blog</title>
-    <link>https://www.kempest.site/tags/about-me/</link>
+    <link>https://www.kempest.ru/tags/about-me/</link>
     <description>Recent content in About me on Anna&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kempest.site/tags/about-me/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kempest.ru/tags/about-me/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About this blog</title>
-      <link>https://www.kempest.site/2020/07/05/about-this-blog/</link>
+      <link>https://www.kempest.ru/2020/07/05/about-this-blog/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/2020/07/05/about-this-blog/</guid>
+      <guid>https://www.kempest.ru/2020/07/05/about-this-blog/</guid>
       <description>Content of this blog I am starting this blog to share my knowledge in mathematics, modelling, statistics, programming (mainly in R and Python) and data science. During all the time of my studying from bachelor to PhD I always had an inspiring cases that really worth sharing. That is why this blog exists and that reminds me about Leo Tolstoy’s quote “You should write only when you cannot help but write” (in his diary from October 19th, 1909) and this is truly my story.</description>
     </item>
     

@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Anna&#39;s blog</title>
-    <link>https://www.kempest.site/post/</link>
+    <link>https://www.kempest.ru/post/</link>
     <description>Recent content in Posts on Anna&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kempest.site/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.kempest.ru/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to make blog in R blogdown and Github Pages</title>
-      <link>https://www.kempest.site/2021/03/04/how-to-make-blog-in-rblogdown/</link>
+      <link>https://www.kempest.ru/2021/03/04/how-to-make-blog-in-rblogdown/</link>
       <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/2021/03/04/how-to-make-blog-in-rblogdown/</guid>
+      <guid>https://www.kempest.ru/2021/03/04/how-to-make-blog-in-rblogdown/</guid>
       <description>This post is made for the blog of community women.code(be).
 The purpose of this tutorial Did you ever think about making your own website or personal blog easily and for free? Or maybe you want to learn some web development basics? Then this tutorial might be interesting for you. Below we will create a static website in markdown with R programming language and deploy it to Github Pages. Don’t be afraid if you are not familiar with R or markdown.</description>
     </item>
     
     <item>
       <title>Correlation analysis limitations in examples</title>
-      <link>https://www.kempest.site/2020/07/15/correlation-analysis-limitations-in-examples/</link>
+      <link>https://www.kempest.ru/2020/07/15/correlation-analysis-limitations-in-examples/</link>
       <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/2020/07/15/correlation-analysis-limitations-in-examples/</guid>
+      <guid>https://www.kempest.ru/2020/07/15/correlation-analysis-limitations-in-examples/</guid>
       <description>Preview Correlation analysis is a common method for studying a relationship between two variables and data exploration. Here I do not intend to explain in much details the theoretical part of the correlation analysis but I want to provide several practical examples where this method is applicable or not. For that purpose, I will generate simple datasets in R, create plots and discuss the obtained results.
 If you are more interested in the theory of correlation analysis or tools for correlation analsis in R or other programming languages, I would refer to another works then.</description>
     </item>
     
     <item>
       <title>About this blog</title>
-      <link>https://www.kempest.site/2020/07/05/about-this-blog/</link>
+      <link>https://www.kempest.ru/2020/07/05/about-this-blog/</link>
       <pubDate>Sun, 05 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kempest.site/2020/07/05/about-this-blog/</guid>
+      <guid>https://www.kempest.ru/2020/07/05/about-this-blog/</guid>
       <description>Content of this blog I am starting this blog to share my knowledge in mathematics, modelling, statistics, programming (mainly in R and Python) and data science. During all the time of my studying from bachelor to PhD I always had an inspiring cases that really worth sharing. That is why this blog exists and that reminds me about Leo Tolstoy’s quote “You should write only when you cannot help but write” (in his diary from October 19th, 1909) and this is truly my story.</description>
     </item>
     
